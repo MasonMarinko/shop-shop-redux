@@ -80,7 +80,6 @@ const Cart = () => {
       </div>
     );
   }
-  console.log(state);
 
   return (
     <div className="cart">
