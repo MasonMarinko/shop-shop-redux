@@ -1,49 +1,58 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import React, { useEffect } from "react";
+import {
+  UPDATE_CATEGORIES,
+  UPDATE_CURRENT_CATEGORY,
+} from "../../utils/actions";
+import { useQuery } from "@apollo/react-hooks";
 import { QUERY_CATEGORIES } from "../../utils/queries";
 // import { useStoreContext } from "../../utils/GlobalState";
-import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
-import { idbPromise } from '../../utils/helpers';
-import { useDispatch, useSelector } from 'react-redux';
+import { idbPromise } from "../../utils/helpers";
+import { useSelector, useDispatch } from "react-redux";
 
 function CategoryMenu() {
+  // const [state, dispatch] = useStoreContext();
   const dispatch = useDispatch();
-  const state = useSelector(state => state);
+  const state = useSelector((state) => state);
 
   const { categories } = state;
+  console.log("state: ", state);
 
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
+  //useEffect function to change the state of the categoryData if it has changed and then update the cateogories list
   useEffect(() => {
+    //if categoryData exists or has changed from the response of useQuery, then run dispatch()
     if (categoryData) {
+      //execute our dispatch function with our action object indicating the type of action and the data to set our state for categories to
       dispatch({
         type: UPDATE_CATEGORIES,
-        categories: categoryData.categories
+        categories: categoryData.categories,
       });
-      categoryData.categories.forEach(category => {
-        idbPromise('categories', 'put', category);
+      categoryData.categories.forEach((category) => {
+        idbPromise("categories", "put", category);
       });
     } else if (!loading) {
-      idbPromise('categories', 'get').then(categories => {
+      idbPromise("categories", "get").then((categories) => {
         dispatch({
           type: UPDATE_CATEGORIES,
-          categories: categories
+          categories: categories,
         });
       });
     }
   }, [categoryData, loading, dispatch]);
 
-  const handleClick = id => {
+  //handler function that dispatches to an action to update the current category when the user has clicked on a category item
+  const handleClick = (id) => {
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
-      currentCategory: id
+      currentCategory: id,
     });
   };
 
   return (
     <div>
       <h2>Choose a Category:</h2>
-      {categories.map(item => (
+      {categories.map((item) => (
         <button
           key={item._id}
           onClick={() => {
