@@ -8,7 +8,7 @@ Live URL Link: [Shop Shop Site](https://shop-shop-redux-2.herokuapp.com/)
 
 ## Description
 
-- 
+- Shop-Shop is an e-commerce site where you can buy a variety of items. Add things to your cart, whether logged in or not and your order will stay even when refreshing the page. If you want to checkout you will need to login. Once checked out you can look at previous items you have ordered.
 
 ## Table of Contents
 * [Usage](#usage)
@@ -18,27 +18,35 @@ Live URL Link: [Shop Shop Site](https://shop-shop-redux-2.herokuapp.com/)
 
 ## Usage/Features
 
-![image](./assets/readme-images/home-nav.png)
-![image](./assets/readme-images/home-nav-arrow.jpg)
-![image](./assets/readme-images/home-nonav.png)
-![image](./assets/readme-images/navbar-logged-in.png)
+![image](./assets/images/homepage.png)
 
-1) The home screen is a simple search bar, if you select the icon in the upper right corner you are introduced with the nav bar and dynamic options based on if the user is logged in or not. If logged in you will see an option for "See Your Books" to view books you've saved.
+1) When you first go to the site you are greeted with a variety of items. Each item shows you how many are in stock, the price and allows you to add the item to your cart. In the nav bar you are able to login/sign-up and/or look at your cart. Once you have signed up or logged in you will have an option that allows the user to to look at Order History.
 
-![image](./assets/readme-images/login.png)
-![image](./assets/readme-images/signup.png)
+![image](./assets/images/category-food.png)
+![image](./assets/images/category-toys.png)
 
-1) These 2 images represent the 2 modals, sign in and sign up depending on which tab you select.
+2) While at the home page the user has tabs under "Choose a Category" where they can narrow down the items in the shop by category. The images above demonstrate if the user were to select the "food" or "toys" category.
 
-![image](./assets/readme-images/books-not-logged-in.png)
-![image](./assets/readme-images/books-logged-in.png)
+![image](./assets/images/singleitem.png)
 
+3) The user can also select a specific item to bring up more information than is available on the home page. They also have the option to "add to cart" or "remove from cart". 
 
-3) After you search for a book you are met with the search results/cards. The cards change whether the user is logged in or not. If the user is logged in they will have a button at the bottom of the card that allows them to add the book to refer to later, if not they will just see the card but can still search for books.
+![image](./assets/images/cart-loggedin.png)
+![image](./assets/images/cart-notlogged.png)
 
-![image](./assets/readme-images/books-page.png)
+4) If you select the cart option to the right of the nav bar you are able to see the 2 different views if a used is signed in or not. If they are not signed in the user can add items to cart, remove them by selecting the trash can and where the "checkout" button would be it says "login to checkout". If the user is logged in the option will change to a checkout button.
 
-4) If a user decides to save a book this is what it will look like on "their" page, they also will see above the books how many books have been saved, if any.
+![image](./assets/images/checkout.png)
+
+5) If the user selects to check out they are taken to the "Stripe" checkout page. On this page the user can see the items they are checking out with, how much it is going to be and can enter their payment information.
+
+![image](./assets/images/checkout-success.png)
+
+6) Once the user checks out they are greeted with a success page then automatically re routed after a few second to the shop-shop home page.
+
+![image](./assets/images/order-history.png)
+
+7) Once a user has made at least 1 order they can select "Order History" where they can look at previous orders they have made on that account.
 
 
 ## License
